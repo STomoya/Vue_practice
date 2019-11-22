@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <title>VueAppSample</title>
+</head>
+<body>
+    <br>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Todo List</h1>
+            <p>An interactive todo list coded by Vue.js</p>
+        </div>
+    </div>
+    <div id="app" class="container border rounded-lg py-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="search query" id="searchQueryTB">
+            <div class="input-group-append">
+                <button v-on:click="switch_search" class="btn btn-outline-secondary">SEARCH</button>
+            </div>
+        </div>
+        <br>
+        <div v-for="todo in list_element">
+            <span v-if="search_element(todo)">
+            <div class="row justify-content-center">
+                <div class="col-9">{{ todo.text }}</div>
+                <div v-on:click="erase_element(todo.id)" class="col-2 btn btn-outline-secondary border col-2">ERASE</div>
+            </div>
+            <hr>
+            </span>
+        </div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="new todo" id="newElementTB">
+            <div class="input-group-append">
+                <button v-on:click="add_element" class="btn btn-outline-secondary">ADD</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="listing.js"></script>
+
+    <!-- optional js for bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
